@@ -1,0 +1,285 @@
+id_cliente,nombre,rut,email,telefono,comuna,fecha_registro,edad
+20,Constanza Rojas,25866151-6,constanza.rojas52@gmail.com,+56936238751,Macul,2024-11-25,20
+156,Josefa Sepúlveda,16135717-0,josefa.sepulveda1@hotmail.com,+56939297473,Santiago,2024-08-19,32
+230,Vicente Rojas,16641197-1,vicente.rojas69@hotmail.com,+56990687312,Macul,2025-02-12,70
+101,Emilia Reyes,23225896-9,emilia.reyes89@hotmail.com,+56963692266,MAIPU,2025-11-09,73
+216,Amanda Espinoza,22590469-3,amanda.espinoza2@outlook.cl,+56926393507,La Florida,2024-10-02,47
+110,Constanza Hernández,24796935-7,constanza.hernandez81@gmail.com,+56935501820,Macul,2025-10-07,21
+31,Emilia Soto,16252952-8,emilia.soto33@gmail.com,+56911861671,Puente Alto,2025-02-19,44
+104,Florencia López,8642254-9,florencia.lopez68@yahoo.com,+56928829146,Ñuñoa,2025-02-02,73
+83,Antonella Flores,19467216-0,antonella.flores17@yahoo.com,+56932588066,Las Condes,2024-07-25,66
+258,Martín Hernández,10508181-2,martin.hernandez29@hotmail.com,+56925935173,Las Condes,2025-03-07,65
+245,Trinidad López,19375675-1,,+56950540066,Quilicura,2024-07-30,49
+171,Lucas Silva,16762781-1,lucas.silva61@gmail.com,+56950990310,Las Condes,2025-03-02,47
+91,Sofía Rodríguez,12803832-9,sofia.rodriguez15@hotmail.com,+56937322411,Macul,2025-08-18,30
+53,Martín Morales,abc-9,martin.morales19@hotmail.com,+56913814208,Providencia,2025-11-10,60
+118,Joaquín Reyes,12499082-3,joaquin.reyes88@outlook.cl,+56933582903,San Bernardo,2024-09-27,26
+252,Isidora Martínez,16439877-3,isidora.martinez28@gmail.com,+56972680196,San Bernardo,2025-03-07,45
+18,Renato Sepúlveda,22604204-0,renato.sepulveda42@gmail.com,+56976782671,San Bernardo,2024-11-22,27
+138,Vicente Contreras,20839370-7,vicente.contreras16@yahoo.com,+56990730471,La Florida,2025-11-11,74
+40,Diego González,25664045-7,,+56944222072,Las Condes,2025-01-20,19
+224,Bruno Rodríguez,11498972-K,bruno.rodriguez7@gmail.com,+56968500500,Maipu ,2025-10-10,79
+221,Lucas López,9542666-2,lucas.lopez59@gmail.com,+56912668772,Las Condes,2024/10/10,31
+212,Antonella Silva,21146748-7,antonella.silva51@hotmail.com,+56979380298,Las Condes,2024-06-26,60
+192,Renato Sepúlveda,13211449-8,renato.sepulveda73@outlook.cl,+56974567639,Ñuñoa,2025-09-14,51
+142,Isidora Hernández,23145113-7,isidora.hernandez13@yahoo.com,+56927574622,Providencia,2024-06-22,61
+253,Josefa Martínez,14547481-7,josefa.martinez22@hotmail.com,+56925168749,Puente Alto,2025-09-29,75
+139,Maite Díaz,21470846-9,maite.diaz31@outlook.cl,+56951688779,Santiago,2024-09-08,74
+1,Camila Reyes,19876371-3,camila.reyes47@yahoo.com,+56966669073,,2025-07-14,75
+28,Trinidad Gutiérrez,14695246-1,,+56985541950,Ñuñoa,2024-10-14,24
+242,Vicente González,20964683-8,vicente.gonzalez37@outlook.cl,+56948430671,Puente Alto,2025-04-09,69
+240,Catalina González,21360751-0,catalina.gonzalez7@outlook.cl,+56967329843,Ñuñoa,2025-01-12,32
+167,Emilia Martínez,10614967-4,emilia.martinez39@gmail.com,+56982949632,Providencia,2025-01-17,47
+94,Isidora Flores,14968928-1,isidora.flores46@yahoo.com,+56960654072,Peñalolén,2024-07-20,77
+9,Tomás Morales,22856372-2,tomas.morales13@yahoo.com,+56979145394,Ñuñoa,2025-09-07,77
+7,Antonella González,8610962-K,antonella.gonzalez20@yahoo.com,+56980180947,San Bernardo,2025-06-04,
+54,Constanza Castillo,7566863-5,constanza.castillo48@gmail.com,+56959391658,Ñuñoa,2025-01-08,52
+5,Joaquín Silva,11594085-6,joaquin.silva81@yahoo.com,+56973002611,Estación Central,13-02-2025,53
+89,Lucas Soto,25480532-7,lucas.soto55@yahoo.com,+56971657845,La Florida,2025-01-01,79
+197,Benjamín Contreras,12729592-1,benjamin.contreras64@hotmail.com,+56939373988,Santiago,2025-06-18,46
+244,Isidora Fuentes,20552180-1,isidora.fuentes87@gmail.com,+56974076885,Quilicura,2025-07-04,50
+206,Bruno Contreras,14098280-6,bruno.contreras63@gmail.com,+56927301329,San Bernardo,2024-09-12,50
+60,Catalina Silva,19195282-0,catalina.silva98@outlook.cl,+56964988991,Peñalolén,2025-06-26,31
+209,Diego Morales,9396824-7,sin.arroba.cl,+56940844858,La Florida,2024-09-07,43
+70,Camila Díaz,12728687-6,camila.diaz43@hotmail.com,+56972205072,Maipú,2024-11-22,63
+168,Diego Rodríguez,12119866-5,diego.rodriguez22@hotmail.com,+56936063000,Quilicura,2025-02-14,61
+236,Constanza Morales,17125954-1,constanza.morales87@hotmail.com,+56944354402,Las Condes,2025/09/01,45
+84,Martín Tapia,12663975-9,martin.tapia53@yahoo.com,+56983292329,Santiago,2025-04-04,32
+231,Vicente Araya,14588507-8,vicente.araya37@gmail.com,+56986155157,Santiago,2024-10-15,69
+14,Bruno Pérez,25814130-K,bruno.perez29@yahoo.com,+56988911235,Las Condes,2025-10-30,
+183,Gaspar Sepúlveda,13518386-5,,+56948406272,Puente Alto,2025-08-21,53
+244,Isidora Fuentes,20552180-1,isidora.fuentes87@gmail.com,+56974076885,La Florida,2025-07-04,50
+62,Catalina Martínez,12345678-J,catalina.martinez70@outlook.cl,+56941446260,La Florida,2024-10-25,53
+180,Vicente Reyes,19443104-K,vicente.reyes16@outlook.cl,+56925815935,Maipú,2025-08-07,32
+117,Sofía González,19053812-5,sofia.gonzalez10@hotmail.com,+56986086876,Quilicura,05-02-2025,70
+261,Emilia Torres,24308745-7,emilia.torres25@yahoo.com,+56923088570,San Bernardo,19/07/2025,31
+178,Maite Araya,19056264-6,maite.araya52@gmail.com,+56995426047,Macul,2024-06-22,45
+182,Amanda Torres,19281592-4,amanda.torres23@yahoo.com,+56996255253,Las Condes,2024-12-21,62
+144,Bruno Díaz,9078744-6,bruno.diaz53@hotmail.com,,Macul,2024-08-10,34
+155,Gaspar González,17363702-0,gaspar.gonzalez70@gmail.com,,La Florida,2025-08-17,34
+203,Lucas Soto,15714534-7,lucas.soto6@gmail.com,+56928562197,Puente Alto,2025-08-25,20
+82,Isidora Pérez,9549433-1,isidora.perez86@gmail.com,+56947630246,Ñuñoa,2024-12-01,26
+123,Renato Torres,11296154-2,renato.torres9@hotmail.com,+56910533783,Peñalolén,2025-11-23,37
+145,Constanza Flores,25081759-2,constanza.flores32@yahoo.com,+56924626460,La Florida,2024-11-20,18
+49,Josefa López,25585199-3,josefa.lopez67@hotmail.com,+56978284809,Providencia,2024-08-27,27
+227,Diego Castillo,21136993-0,diego.castillo70@gmail.com,+56924139927,La Florida,2025-02-15,31
+248,Constanza Valenzuela,24203060-5,constanza.valenzuela12@gmail.com,,Santiago,2025-11-13,56
+263,Camila Rojas,10105365-2,camila.rojas38@outlook.cl,+56992128181,Ñuñoa,2025-07-26,20
+64,Diego Reyes,18545109-7,diego.reyes87@yahoo.com,+56955209507,Providencia,2025-10-20,76
+48,Constanza Gutiérrez,10880660-5,constanza.gutierrez3@hotmail.com,+56988166830,Ñuñoa,2024-07-16,79
+184,Matías Contreras,10500511-3,matias.contreras51@yahoo.com,+56959393855,Maipu ,2025-10-15,34
+132,Trinidad Pérez,22425978-6,trinidad.perez49@yahoo.com,+56917942225,Peñalolén,2025-04-11,65
+99,Sofía Soto,25443812-K,sofia.soto33@gmail.com,+56916199453,Estación Central,2024-08-12,66
+234,Renato Reyes,20167327-5,renato.reyes27@yahoo.com,+56981447513,San Bernardo,2025-10-11,43
+59,Matías Araya,18630429-2,matias.araya42@yahoo.com,+56964099053,La Florida,2024-11-28,30
+179,Catalina Tapia,9255262-4,catalina.tapia83@gmail.com,+56973406082,Las Condes,2025-09-28,
+215,Camila Tapia,19741399-9,camila.tapia6@yahoo.com,9 8765 4321,Macul,2024-10-01,52
+22,Maite Araya,14839143-2,maite.araya67@hotmail.com,+56931527272,Macul,2024-12-08,42
+214,Bruno Sepúlveda,12064596-K,bruno.sepulveda52@hotmail.com,+56980002754,Maipu ,2025-09-22,62
+95,Constanza Tapia,18447186-8,constanza.tapia97@outlook.cl,+56920580092,San Bernardo,2025-09-23,40
+210,Joaquín Fuentes,11111111-1,joaquin.fuentes19@outlook.cl,+56988084305,San Bernardo,2024-12-18,34
+39,Matías López,20156133-7,matias.lopez31@yahoo.com,+56998931731,Maipú,2024-10-07,29
+12,Diego Rojas,14170342-0,diego.rojas32@gmail.com,+56993359230,Santiago,2025-03-02,60
+147,Sofía Fuentes,10277415-9,sofia.fuentes74@outlook.cl,+56952837145,Puente Alto,15-04-2025,32
+243,Benjamín Silva,22920685-0,cliente@,+56952060866,Puente Alto,2025-02-06,70
+141,Florencia Flores,23797821-8,florencia.flores44@hotmail.com,+56926725468,Providencia,21-05-2025,33
+135,Matías Araya,21903659-0,matias.araya50@outlook.cl,+56942749614,Quilicura,2025-06-22,40
+65,Renato Castillo,25834517-7,renato.castillo67@hotmail.com,+56966966881,La Florida,2025-05-05,21
+254,Catalina Hernández,12811139-5,catalina.hernandez11@outlook.cl,+56922309408,Estación Central,2025-06-17,71
+266,Vicente Contreras,15489364-4,vicente.contreras9@outlook.cl,+56967508601, Santiago,2025-02-20,66
+247,Martín Muñoz,25375644-6,martin.munoz57@yahoo.com,+56986994165,,2025-02-10,64
+50,Bruno López,18694092-K,bruno.lopez71@outlook.cl,+56951663837,Santiago,2024-12-12,28
+13,Maite Rodríguez,12692914-5,maite.rodriguez1@outlook.cl,98765432,Peñalolén,2025-10-17,62
+204,Amanda Reyes,10639616-7,amanda.reyes20@yahoo.com,+56973689113,Santiago,2025-05-14,68
+55,Isidora Valenzuela,15826702-0,isidora.valenzuela17@gmail.com,+56953794068,San Bernardo,2024-09-18,73
+201,Benjamín Muñoz,17747909-8,benjamin.munoz1@hotmail.com,+56910462465,Santiago,2025-04-13,28
+116,Florencia Araya,18810929-2,florencia.araya52@outlook.cl,+56996723552,Macul,2024-11-20,47
+75,Antonella Araya,20919288-8,antonella.araya39@hotmail.com,+56988080251,santiago,2025-07-26,73
+85,Amanda Rodríguez,25711530-5,amanda.rodriguez12@yahoo.com,+56964599229,Las Condes,2025-04-29,27
+188,Sofía Castillo,9052313-9,sofia.castillo36@yahoo.com,+56955115783,Estación Central,2024-08-08,66
+174,Matías Rojas,14260540-6,matias.rojas84@hotmail.com,+56982507710,Santiago,2024-07-01,38
+171,Lucas Silva,16762781-1,lucas.silva61@gmail.com,+56950990310,Macul,2025-03-02,47
+211,Diego Gutiérrez,10556863-0,diego.gutierrez18@outlook.cl,+56925926241,San Bernardo,2024-11-12,134
+26,Sofía Hernández,18587798-1,sofia.hernandez53@hotmail.com,+56913648678,La Florida,08-11-2024,40
+66,Josefa Gutiérrez,13303892-2,josefa.gutierrez2@outlook.cl,+56985017167,Estación Central,2025-02-14,0
+176,Emilia Flores,14844395-5,,+56987283649,Estación Central,2025-10-18,77
+193,Constanza Gutiérrez,9995330-6,constanza.gutierrez99@hotmail.com,+56945687515,nunoa,2025-07-13,18
+119,Camila López,10506129-3,camila.lopez90@yahoo.com,+56994458990,Puente Alto,2025-05-13,50
+113,Maite Araya,25626656-3,correo con espacio@gmail.com,+56917143479,Quilicura,2025-05-27,32
+137,Martín Fuentes,24715066-8,martin.fuentes25@outlook.cl,+56914170694,Quilicura,2024-08-26,24
+57,Joaquín Díaz,24912950-K,joaquin.diaz32@outlook.cl,+56971194403,Peñalolén,2025-05-20,23
+45,Florencia Rodríguez,19549694-3,florencia.rodriguez59@yahoo.com,+56983658086,San Bernardo,2025-04-16,30
+90,Tomás Castillo,22279943-0,tomas.castillo72@yahoo.com,+56922316302,Maipú,2024-12-18,25
+181,Maite Contreras,16836968-9,maite.contreras28@yahoo.com,+56911201999,Providencia,2024-07-10,65
+200,Sofía Rojas,20444555,sofia.rojas24@gmail.com,+56942927294,Quilicura,2025-02-02,78
+105,Amanda Morales,16469361-9,amanda.morales99@yahoo.com,+56987892505,Santiago Centro,2025-05-28,56
+114,Diego López,23070035-4,diego.lopez12@hotmail.com,+56914220299,Santiago,2025-07-29,42
+17,Lucas Castillo,19358230-3,lucas.castillo99@gmail.com,+56913433596,Quilicura,2025-10-01,38
+160,Diego Gutiérrez,8304512-4,diego.gutierrez97@outlook.cl,+56964888845,La Florida,2025-08-26,30
+33,Diego Espinoza,19254346-0,diego.espinoza41@yahoo.com,+56991504394,Macul,2024-07-09,7
+207,Matías Díaz,19841553-7,matias.diaz72@gmail.com,+56928165629,Peñalolén,2024-09-17,76
+89,Lucas Soto,25480532-7,lucas.soto55@yahoo.com,+56971657845,La Florida,2025-01-01,79
+262,Tomás Morales,12548245-7,tomas.morales56@gmail.com,+56967337768,,2025-02-20,38
+87,Constanza Reyes,16131129-4,constanza.reyes43@gmail.com,+56931986261,Quilicura,2024-12-13,73
+98,Joaquín Flores,8237068-4,joaquin.flores20@outlook.cl,+56928028205,Santiago,2024-09-16,43
+19,Trinidad Araya,14445285-2,trinidad.araya56@outlook.cl,+56971581409,Peñalolén,2025-01-25,61
+26,Sofía Hernández,18587798-1,sofia.hernandez53@hotmail.com,+56913648678,San Bernardo,08-11-2024,40
+102,Emilia Fuentes,8885272-9,emilia.fuentes63@hotmail.com,+56989951966,Las Condes,24/08/2025,30
+190,Renato Martínez,11498876-6,renato.martinez91@gmail.com,+56980004769,Las Condes,2025-02-09,78
+191,Emilia Espinoza,18156315-K,emilia.espinoza29@outlook.cl,+56992429979,Macul,2025-03-04,215
+129,Vicente Silva,20423896-0,vicente.silva17@outlook.cl,+56996508635,Quilicura,2025-07-10,31
+30,Maite Díaz,24499571-3,maite.diaz41@outlook.cl,+56988934594,Providencia,26/03/2025,77
+218,Martín López,19729770-0,martin.lopez96@yahoo.com,+56936117720,Macul,2025-09-25,51
+21,Maite Flores,9116902-9,maite.flores58@hotmail.com,+56974940010,Estación Central,2024-06-21,26
+15,Sofía Fuentes,12872786-8,sofia.fuentes18@outlook.cl,+56978142594,Puente Alto,2025-07-05,69
+199,Matías Reyes,20914918-4,matias.reyes10@gmail.com,+56951020839,Puente Alto,2025-01-31,40
+3,Amanda Martínez,21591725-8,amanda.martinez73@yahoo.com,+56978846905,Quilicura,2024-06-26,54
+36,Camila Sepúlveda,18591352-K,camila.sepulveda38@gmail.com,+56949854883,Puente Alto,2025-04-23,55
+166,Josefa Rojas,7836766-0,josefa.rojas47@gmail.com,+56947104462,Quilicura,2025-01-11,30
+88,Sofía Fuentes,22033498-8,sofia.fuentes26@hotmail.com,+56942362684,Maipú,2025-10-20,
+213,Gaspar Soto,7997733-0,gaspar.soto68@hotmail.com,+56951624168,Las Condes,2024-11-06,19
+24,Martín Martínez,23066412-9,martin.martinez64@yahoo.com,+56948610449,San Bernardo,2024-11-29,38
+97,Benjamín Rojas,25204577-5,benjamin.rojas58@gmail.com,+56961839470,Macul,2025-09-11,57
+165,Constanza Sepúlveda,8541484-4,constanza.sepulveda14@hotmail.com,+56972587437,Puente Alto,2024-08-18,41
+175,Florencia González,18183548-6,florencia.gonzalez13@outlook.cl,+56976962921,Quilicura,2025-07-27,61
+163,Maite Castillo,12430143-2,maite.castillo1@outlook.cl,+56922687328,,2025-08-15,30
+6,Josefa Tapia,17822258-9,josefa.tapia71@yahoo.com,+56963948553,Puente Alto,2024-12-25,36
+100,Gaspar Araya,11515617-9,gaspar.araya94@outlook.cl,+56930566570,NUNOA,2025-09-26,33
+159,Sofía Díaz,9910095-8,sofia.diaz76@yahoo.com,+56914938359,Las Condes,26-08-2025,71
+239,Bruno Muñoz,19630351-0,,+56948204430,Peñalolén,2025-07-09,41
+73,Lucas Morales,23595806-6,,+56953893672,Ñuñoa,2024-07-08,59
+256,Martín Rojas,25343692-1,martin.rojas76@gmail.com,+56938188002,Maipú,2024-11-20,22
+72,Matías Muñoz,13716233-4,matias.munoz71@hotmail.com,+56973185648,Macul,2025/05/16,39
+96,Diego Araya,25294292-0,diego.araya13@outlook.cl,+56949830184,Santiago,2024-08-22,55
+52,Maite González,23606533-2,maite.gonzalez55@outlook.cl,+56982124991,Las Condes,2025-11-11,19
+220,Constanza Espinoza,21016114-7,constanza.espinoza81@gmail.com,+56933468329,Providencia,2024-12-12,51
+226,Maite Rodríguez,9939643-1,@outlook.cl,+56984342000,La Florida,2024-07-07,56
+127,Gaspar Fuentes,23253805-8,gaspar.fuentes38@outlook.cl,+56932568994,Providencia,2024-07-02,31
+108,Florencia Muñoz,16314019-5,florencia.munoz97@hotmail.com,+56980426917,Ñuñoa,2025-06-19,23
+38,Benjamín Pérez,25035005-8,benjamin.perez46@outlook.cl,+56913864688,Puente Alto,2024-10-08,40
+170,Martín Rodríguez,23394826-8,martin.rodriguez9@hotmail.com,+56993645923,Ñuñoa,2024-07-21,53
+238,Josefa Muñoz,16758090-4,josefa.munoz96@yahoo.com,+56921838188,Maipú,2025-01-20,43
+152,Maite Fuentes,22994358-8,maite.fuentes78@yahoo.com,+56924294785,La Florida,2025-08-15,66
+161,Benjamín Fuentes,17956596-K,benjamin.fuentes20@outlook.cl,+56995842268,Quilicura,2024-11-16,56
+257,Isidora Gutiérrez,21999001-4,isidora.gutierrez91@yahoo.com,+56978466354,Puente Alto,2024-11-08,74
+80,Amanda Pérez,24736290-8,pedro@gmail,+56975576576,Las Condes,2025-04-30,41
+172,Josefa Reyes,10967876-7,josefa.reyes27@outlook.cl,+56926582061,nunoa,2025-07-30,22
+46,Martín Castillo,21275376-9,martin.castillo20@yahoo.com,+56910712938,La Florida,18/11/2025,62
+77,Amanda Araya,18408461-9,,+56998658609,La Florida,2025-06-04,29
+264,Trinidad Fuentes,19606850-3,trinidad.fuentes82@outlook.cl,+56954171411,Estación Central,2024-07-18,19
+121,Agustín Sepúlveda,13527709-6,agustin.sepulveda40@gmail.com,+56913832199,La Florida,2024/11/27,63
+40,Diego González,25664045-7,,+56944222072,Las Condes,2025-01-20,19
+208,Tomás Torres,8276859-9,tomas.torres86@yahoo.com,+56973189995,La Florida,2025-04-18,34
+169,Vicente López,15934854-7,vicente.lopez76@yahoo.com,+56958741029,Maipú,2024-12-10,66
+8,Florencia Martínez,23792996-9,florencia.martinez60@yahoo.com,+56968281295,Quilicura,2024-07-05,71
+92,Matías González,25851034-8,matias.gonzalez19@outlook.cl,+56948536141,Estación Central,2025-06-09,43
+146,Isidora Valenzuela,17819056-3,isidora.valenzuela34@yahoo.com,+56923735094,Estación Central,2025-01-18,41
+22,Maite Araya,14839143-2,maite.araya67@hotmail.com,+56931527272,San Bernardo,2024-12-08,42
+173,Joaquín Morales,17027724-4,joaquin.morales39@hotmail.com,+56916355989,Providencia,2025-03-26,66
+109,Antonella Soto,8719520-1,antonella.soto28@gmail.com,+56970048482,Quilicura,2024-07-07,40
+225,Sofía Gutiérrez,23422933-8,sofia.gutierrez10@gmail.com,+56932689444,Ñuñoa,2025-01-18,33
+93,Camila Torres,24982446-1,camila.torres59@outlook.cl,+56957537639,San Bernardo,2024-10-20,24
+47,Matías Muñoz,13290581-9,matias.munoz11@outlook.cl,+56960035545,Quilicura,2025-02-27,26
+56,Bruno Rojas,20290901-9,bruno.rojas34@outlook.cl,+56996912096,Providencia,2025-05-23,48
+29,Antonella Díaz,22131506-5,antonella.diaz22@gmail.com,+56918110255,La Florida,2024-12-07,59
+35,Lucas Araya,15941542-2,lucas.araya50@outlook.cl,+56957824180,Santiago,2025-08-22,74
+189,Josefa Araya,24649405-3,josefa.araya56@outlook.cl,,Providencia,2024-10-01,62
+255,Florencia Sepúlveda,17548213-K,florencia.sepulveda57@yahoo.com,+56968950486,Las Condes,2025-05-26,73
+157,Martín Muñoz,19818517-5,martin.munoz80@yahoo.com,+56923841477,Macul,2025-11-11,58
+122,Catalina Espinoza,10757650-9,catalina.espinoza32@yahoo.com,+56931359146,Peñalolén,2025-10-28,77
+112,Gaspar Castillo,8963133-5,gaspar.castillo61@outlook.cl,+56919571240,Estación Central,2024-11-19,53
+103,Vicente Espinoza,23482336-1,vicente.espinoza76@yahoo.com,+56974805280,Quilicura,2024-06-17,49
+149,Catalina Sepúlveda,21371699-9,catalina.sepulveda95@outlook.cl,+56937908106,Estación Central,2025-08-27,28
+187,Tomás Valenzuela,21131594-6,tomas.valenzuela60@yahoo.com,+56915760107,Ñuñoa,2025-03-25,62
+61,Isidora Hernández,11781009-7,isidora.hernandez56@outlook.cl,,Providencia,2025-04-24,35
+153,Renato Hernández,18386339-8,renato.hernandez73@yahoo.com,+56958085087,Santiago,2025-05-31,42
+229,Lucas González,12750965-4,lucas.gonzalez14@outlook.cl,+56931253986,Santiago,2025-06-12,63
+222,Diego López,20673569-4,diego.lopez77@outlook.cl,+56937460878,nunoa,2025-01-13,26
+4,Agustín Pérez,9140399-4,agustin.perez91@gmail.com,+56993524993,Puente Alto,25/09/2025,27
+23,Antonella Fuentes,25384878-2,,+56961430266,Ñuñoa,2024-12-09,40
+143,Catalina Fuentes,9604326-0,catalina.fuentes57@yahoo.com,+56918233182,San Bernardo,2025-09-30,40
+158,Gaspar Muñoz,17200150-5,gaspar.munoz17@gmail.com,+56966152494,maipu,2024-09-28,62
+223,Joaquín Sepúlveda,20768457-0,joaquin.sepulveda41@outlook.cl,+56914564136,Providencia,2024-12-24,
+217,Diego Muñoz,11031517-1,diego.munoz30@hotmail.com,+56993914244,Las Condes,2025-05-18,73
+154,Bruno Rodríguez,15925151-9,bruno.rodriguez62@gmail.com,+56958341019,Puente Alto,2025-09-21,20
+67,Emilia Espinoza,21412421-1,emilia.espinoza61@yahoo.com,+56955465791,Santiago,2024-07-09,66
+246,Diego Araya,13370100-1,ana@@gmail.com,+56986859251,Puente Alto,2024-11-23,69
+194,Martín López,10615230-6,martin.lopez80@outlook.cl,+56964206890,Quilicura,2024-06-08,65
+74,Joaquín Pérez,8230618-8,joaquin.perez62@outlook.cl,+56944071544,San Bernardo,2024-12-21,41
+78,Sofía Flores,13350135-5,sofia.flores98@outlook.cl,+56980866014,Quilicura,2025-06-28,58
+251,Tomás Soto,24218956-6,tomas.soto67@hotmail.com,+56916870286,Estación Central,2025-06-24,64
+232,Florencia Araya,21012292-3,florencia.araya95@gmail.com,+56940480829,La Florida,2024-10-14,64
+102,Emilia Fuentes,8885272-9,emilia.fuentes63@hotmail.com,+56989951966,Las Condes,24/08/2025,30
+233,Vicente Gutiérrez,11887122-7,vicente.gutierrez24@hotmail.com,+56939004202,Estación Central,2025-11-17,-3
+259,Joaquín Rojas,19962684-1,joaquin.rojas86@gmail.com,+56999931613,Las Condes,2025-06-18,27
+10,Martín Fuentes,23577480-1,martin.fuentes9@outlook.cl,+56976896901,La Florida,2024-09-07,30
+241,Florencia Araya,23123252-4,florencia.araya87@hotmail.com,+56962170303,Quilicura,2025-10-09,47
+249,Joaquín Fuentes,8251516-K,joaquin.fuentes4@hotmail.com,+56978374563,Las Condes,2024-11-19,72
+150,Lucas Araya,17867111-1,lucas.araya34@outlook.cl,+56924807223,Peñalolén,2025-02-08,18
+270,Maite Castillo,11994023-0,maite.castillo97@gmail.com,+56916667344,Macul,2024-11-23,40
+48,Constanza Gutiérrez,10880660-5,constanza.gutierrez3@hotmail.com,+56988166830,Ñuñoa,2024-07-16,79
+250,Camila Torres,8066678-0,camila.torres12@yahoo.com,+56992763488,Las Condes,2025-11-16,34
+269,Sofía Rodríguez,10921199-0,sofia.rodriguez46@yahoo.com,+56956776833,Estación Central,2025-02-09,57
+7,Antonella González,8610962-K,antonella.gonzalez20@yahoo.com,+56980180947,San Bernardo,2025-06-04,
+69,Catalina Araya,16791538-8,catalina.araya80@outlook.cl,+56920601584,Quilicura,2024-12-10,52
+268,Camila Rojas,9589413-5,camila.rojas15@outlook.cl,+56948347255,NUNOA,2025-04-13,42
+160,Diego Gutiérrez,8304512-4,diego.gutierrez97@outlook.cl,+56964888845,La Florida,2025-08-26,30
+34,Josefa Morales,14735551-3,josefa.morales77@yahoo.com,+56967193390,Macul,2024-10-01,61
+185,Emilia Reyes,15512030-4,emilia.reyes94@outlook.cl,+56983808359,Providencia,2024-12-17,65
+115,Diego Rojas,22301967-6,diego.rojas87@hotmail.com,+56933028108,Maipú,2024-11-16,53
+37,Camila Flores,18991850-K,camila.flores26@gmail.com,+56925112594,Las Condes,2024-10-04,25
+136,Bruno González,11090006-6,bruno.gonzalez31@hotmail.com,+56933464099,San Bernardo,09/07/2025,48
+196,Isidora González,8205880-K,isidora.gonzalez63@gmail.com,+56912373671,Peñalolén,2024-09-19,46
+43,Maite Araya,18153463-K,maite.araya8@gmail.com,+56994269694,Maipú,2025-09-25,21
+177,Renato Torres,21893213-4,renato.torres8@outlook.cl,+56958731652,Maipú,2025-02-16,53
+25,Amanda Torres,22417726-7,amanda.torres16@outlook.cl,+56922692439,Maipú,2025-01-23,18
+106,Amanda Soto,25296454-1,amanda.soto16@outlook.cl,+56939098671,Peñalolén,2024-08-17,53
+124,Isidora Fuentes,15957499-7,isidora.fuentes3@yahoo.com,+56991673863,Ñuñoa,2024-11-02,42
+42,Maite Espinoza,10501336-1,maite.espinoza23@gmail.com,569-12345678,Quilicura,2025-02-27,39
+151,Florencia Valenzuela,18829165-1,florencia.valenzuela90@outlook.cl,telefono,Providencia,2025-05-11,43
+164,Antonella Gutiérrez,23002024-8,,+56937589331,La Florida,2024-11-11,66
+83,Antonella Flores,19467216-0,antonella.flores17@yahoo.com,+56932588066,Las Condes,2024-07-25,66
+130,Gaspar Flores,17662953-3,gaspar.flores70@yahoo.com,+56945387288,,2025-09-07,33
+140,Sofía Morales,12556007-5,sofia.morales59@yahoo.com,+56923360565,Macul,17/09/2024,70
+260,Gaspar Soto,9379845-7,gaspar.soto63@outlook.cl,+56932963858,La Florida,2025-06-30,79
+68,Agustín Castillo,11554722-4,agustin.castillo85@outlook.cl,+56953837345,Santiago,2025-01-01,68
+11,Bruno Fuentes,12410982-5,,+56922370664,Santiago,2025-09-06,55
+64,Diego Reyes,18545109-7,diego.reyes87@yahoo.com,+56955209507,Providencia,2025-10-20,76
+219,Isidora Hernández,20784768-2,isidora.hernandez89@gmail.com,+56996296613,Quilicura,2024-10-15,24
+235,Benjamín Sepúlveda,7900407-3,benjamin.sepulveda47@outlook.cl,,Ñuñoa,2025-07-02,51
+71,Tomás Rojas,21493508-2,tomas.rojas92@hotmail.com,+56924503016,Santiago,2025-03-05,78
+267,Renato González,14150616-1,renato.gonzalez60@gmail.com,+56 9 7654 3210,La Florida,2025-08-06,22
+41,Camila Martínez,25657980-4,camila.martinez62@yahoo.com,+56945408799,La Florida,2024-10-20,78
+120,Lucas Rojas,8205068-K,lucas.rojas84@outlook.cl,+56941942964,Providencia,2025-06-22,74
+79,Vicente Valenzuela,14708957-0,vicente.valenzuela4@yahoo.com,+56942332421,Maipú,2025-08-14,50
+114,Diego López,23070035-4,diego.lopez12@hotmail.com,+56914220299,Santiago,2025-07-29,42
+51,Tomás Sepúlveda,25658494-8,tomas.sepulveda37@outlook.cl,+56927985812,,2024-12-11,65
+134,Renato Valenzuela,24479414-9,renato.valenzuela45@outlook.cl,+56962282347,Quilicura,2025-01-12,18
+58,Sofía Rojas,24103162-4,sofia.rojas40@outlook.cl,+56998866676,Maipu ,2024-11-20,38
+44,Agustín Tapia,24566463-K,agustin.tapia20@yahoo.com,+56958309143,Maipú,2025-03-10,39
+125,Maite Castillo,7668064-7,maite.castillo57@gmail.com,+56922916212,MAIPU,2025-04-29,46
+86,Constanza Araya,8851337-1,constanza.araya61@gmail.com,+56917807338,Providencia,2025-05-28,55
+148,Bruno Valenzuela,25074193-6,bruno.valenzuela24@yahoo.com,+56943964953,Santiago,2025-02-13,51
+128,Florencia Reyes,17380654-K,florencia.reyes92@yahoo.com,+56940178681,Estación Central,2025-04-30,28
+195,Diego González,15333222-X,diego.gonzalez8@gmail.com,+56915762104,Macul,2025-04-18,58
+81,Maite López,25374542-8,maite.lopez79@hotmail.com,+56930400126,Peñalolén,2024-11-04,64
+63,Vicente Martínez,17347199-8,vicente.martinez74@yahoo.com,+56994985580,Puente Alto,2025-07-15,19
+133,Benjamín Valenzuela,24741562-9,benjamin.valenzuela44@outlook.cl,+56965569402,Maipú,2025-11-06,36
+198,Benjamín Contreras,8714377-5,benjamin.contreras40@yahoo.com,+56970247790,Estación Central,2024-09-07,75
+115,Diego Rojas,22301967-6,diego.rojas87@hotmail.com,+56933028108,Maipú,2024-11-16,53
+16,Isidora Araya,14100059-4,isidora.araya49@gmail.com,+56924245056,Puente Alto,2024-08-15,21
+126,Sofía López,16684244-1,sofia.lopez57@yahoo.com,+56949916108,Ñuñoa,2025-08-31,65
+32,Camila Muñoz,10736322-K,camila.munoz31@gmail.com,+56951596580,Providencia,05-09-2024,61
+205,Joaquín Valenzuela,13314266-5,joaquin.valenzuela75@hotmail.com,,Peñalolén,2025-11-03,22
+131,Martín Araya,17634264-1,martin.araya5@hotmail.com,+56950305502,Las Condes,2025-08-15,60
+265,Catalina Castillo,16506671-5,catalina.castillo92@outlook.cl,+56925467899,Ñuñoa,2024-09-28,18
+111,Tomás Rojas,13148613-8,tomas.rojas84@gmail.com,+56947463204,Maipú,2024-06-08,36
+237,Antonella Rojas,12755255-K,antonella.rojas79@yahoo.com,+56951664608,Ñuñoa,2025-08-30,43
+162,Josefa Reyes,9138273-3,josefa.reyes9@yahoo.com,+56987059121,Puente Alto,2025-10-03,46
+27,Diego Tapia,25564992-2,diego.tapia28@gmail.com,+56993320274,Estación Central,2025-03-15,53
+186,Antonella Soto,10158201-9,antonella.soto59@hotmail.com,+56939610064,Estación Central,2025-01-17,77
+76,Sofía Gutiérrez,24577901-1,x@x,+56974773101,Peñalolén,2024-09-01,72
+2,Trinidad Flores,24225377-9,trinidad.flores15@yahoo.com,+56977962320,Peñalolén,2025-10-16,43
+107,Martín Hernández,21102979-K,martin.hernandez15@gmail.com,+56965823356,Puente Alto,2024-06-06,33
+228,Vicente López,10058266-K,vicente.lopez6@hotmail.com,+56994216826,Santiago,2024-10-27,29
+202,Josefa Contreras,9.876.543-2,josefa.contreras12@yahoo.com,+56976108263,Providencia,2025-05-12,76

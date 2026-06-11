@@ -1,0 +1,5 @@
+2026-06-10 22:46:46,999 | INFO | INICIO Etapa 1 — Ingesta
+2026-06-10 22:46:47,167 | INFO | INGESTA OK | tabla=productos | filas=40 | columnas=5 | nulos=0 | duplicados=0
+2026-06-10 22:46:47,199 | INFO | INGESTA OK | tabla=clientes | filas=284 | columnas=8 | nulos=31 | duplicados=10
+2026-06-10 22:46:47,209 | INFO | INGESTA OK | tabla=pedidos | filas=460 | columnas=9 | nulos=121 | duplicados=10
+2026-06-10 22:46:47,210 | INFO | FIN Etapa 1 | tablas=3 | registros_totales=784

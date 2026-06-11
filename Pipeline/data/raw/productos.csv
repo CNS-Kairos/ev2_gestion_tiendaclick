@@ -1,0 +1,41 @@
+id_producto,nombre_producto,categoria,precio_unitario_clp,stock
+1,Notebook 14'',Tecnología,449990,65
+2,Mouse inalámbrico,Tecnología,12990,168
+3,Teclado mecánico,Tecnología,54990,262
+4,Audífonos bluetooth,Tecnología,29990,267
+5,Monitor 24'',Tecnología,129990,57
+6,Smartphone X12,Tecnología,299990,119
+7,Tablet 10'',Tecnología,159990,289
+8,Cargador USB-C,Tecnología,9990,220
+9,Polera algodón,Vestuario,9990,298
+10,Jeans clásico,Vestuario,24990,285
+11,Zapatillas urbanas,Vestuario,39990,256
+12,Chaqueta impermeable,Vestuario,49990,230
+13,Calcetines pack 3,Vestuario,5990,127
+14,Gorro de lana,Vestuario,7990,6
+15,Cafetera italiana,Hogar,19990,46
+16,Juego de sábanas,Hogar,29990,61
+17,Lámpara de escritorio,Hogar,15990,152
+18,Aspiradora compacta,Hogar,89990,55
+19,Set de ollas,Hogar,59990,235
+20,Hervidor eléctrico,Hogar,17990,10
+21,Balón de fútbol,Deportes,14990,256
+22,Mat de yoga,Deportes,12990,165
+23,Mancuernas 5kg par,Deportes,24990,112
+24,Bicicleta aro 29,Deportes,249990,208
+25,Botella térmica,Deportes,8990,133
+26,Cuerda de saltar,Deportes,4990,183
+27,Novela bestseller,Libros,14990,187
+28,Libro de cocina,Libros,19990,197
+29,Cómic ilustrado,Libros,12990,267
+30,Atlas mundial,Libros,24990,44
+31,Shampoo natural,Belleza,6990,179
+32,Crema hidratante,Belleza,11990,50
+33,Perfume 50ml,Belleza,34990,290
+34,Set de brochas,Belleza,9990,280
+35,Alimento perro 15kg,Mascotas,32990,154
+36,Arena para gato 10L,Mascotas,8990,152
+37,Juguete mordedor,Mascotas,4990,239
+38,Correa retráctil,Mascotas,10990,77
+39,Cuna portátil,Infantil,69990,300
+40,Set de bloques,Infantil,16990,163
