@@ -30,14 +30,19 @@ LOG_DIR.mkdir(parents=True, exist_ok=True)
 DB_PATH = DB_DIR / "tiendaclick.db"
 
 # ─── Logging ─────────────────────────────────────────────────────────────────
-# Obtener logger centralizado (configurado por main.py) o crear uno de respaldo
+# Logger de la etapa. Si se ejecuta desde main.py, usa el logger centralizado.
+# Si se ejecuta carga.py directamente, también escribe en logs/pipeline.log.
 logger = logging.getLogger(__name__)
-if not logger.handlers:
-    # Si se ejecuta directamente (no desde main.py), crear un logger local
-    handler = logging.FileHandler(LOG_DIR / "carga.log", encoding="utf-8")
-    handler.setFormatter(logging.Formatter("%(asctime)s | %(levelname)s | %(message)s"))
-    logger.addHandler(handler)
-    logger.setLevel(logging.INFO)
+
+if not logging.getLogger().handlers:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s | %(levelname)s | %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+        handlers=[
+            logging.FileHandler(LOG_DIR / "pipeline.log", encoding="utf-8"),
+        ],
+    )
 
 
 # ─── Definición del esquema de la base de datos ─────────────────────────────
