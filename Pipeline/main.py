@@ -17,6 +17,7 @@ from pathlib import Path
 from ingesta import ingestar
 from limpieza import limpiar
 from validacion import validar
+from carga import cargar
 
 # ─── Rutas del proyecto ──────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).resolve().parent
@@ -68,9 +69,8 @@ def main():
         # Etapa 3: Validación
         ejecutar_etapa("3 — Validación Estructural y Semántica", validar)
 
-        # Etapa 4: Carga (estructura para futura implementación)
-        logger.info(f"{'─' * 70}")
-        logger.info("Etapa 4 — Carga a BD: [PENDIENTE DE IMPLEMENTACIÓN]")
+        # Etapa 4: Carga
+        ejecutar_etapa("4 — Carga a Base de Datos", cargar)
 
         logger.info("=" * 70)
         logger.info("✅ PIPELINE COMPLETADO CON ÉXITO")
