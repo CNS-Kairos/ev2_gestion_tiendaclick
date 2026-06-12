@@ -226,10 +226,9 @@ def validar():
         clientes_validos, _ = separar(clientes, motivos_cli, "clientes")
 
         # pedidos: estructural + semántica.
-        # Las FK se chequean contra los datos LIMPIOS (no solo válidos):
-        # un cliente rechazado p.ej. por email inválido sigue existiendo —
-        # los huérfanos reales los detecta además la BD en la Etapa 4
-        motivos_ped = validar_pedidos(pedidos, productos, clientes)
+        # Las FK se chequean contra los datos YA VALIDADOS (no limpios):
+        # Esto garantiza que los pedidos solo referencien clientes/productos que pasaron validación
+        motivos_ped = validar_pedidos(pedidos, productos_validos, clientes_validos)
         pedidos_validos, _ = separar(pedidos, motivos_ped, "pedidos")
 
     except FileNotFoundError:
