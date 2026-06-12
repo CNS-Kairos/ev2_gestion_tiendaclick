@@ -220,6 +220,7 @@ def cargar():
     print("ETAPA 4 — CARGA A BASE DE DATOS")
     print("=" * 60)
     
+    conn = None  # Inicializamos la variable para el manejo en bloques posteriores
     try:
         # 1. Leer datos validados
         print("\n Leyendo datos validados...")
@@ -239,29 +240,23 @@ def cargar():
         # 3. Crear esquema
         crear_base_datos(conn)
         
-        # 4. Opcional: limpiar tablas antes de insertar (descomentar para reiniciar)
-        # limpiar_tablas(conn, ["pedidos", "clientes", "productos"])
-        
-        # 5. Cargar datos en orden (padres → hijos)
+        # 4. Cargar datos en orden (padres → hijos)
         print("\n💾 Cargando datos...")
-        
         logger.info("Iniciando carga de datos en tablas")
-        # Primero tablas padre (sin dependencias)
+        
         filas_clientes = cargar_tabla(conn, clientes, "clientes", insert_mode="replace")
         filas_productos = cargar_tabla(conn, productos, "productos", insert_mode="replace")
-        
-        # Luego tabla hija (depende de clientes y productos)
         filas_pedidos = cargar_tabla(conn, pedidos, "pedidos", insert_mode="replace")
         
-        # 6. Verificar integridad referencial
+        # Confirmación explícita de la transacción (ACID - COMMIT) si todo fue exitoso
+        conn.commit()
+        
+        # 5. Verificar integridad referencial
         print("\n🔍 Verificando integridad...")
         verificar_integridad(conn)
         
-        # 7. Mostrar estadísticas finales
+        # 6. Mostrar estadísticas finales
         mostrar_estadisticas(conn)
-        
-        # 8. Cerrar conexión
-        conn.close()
         
         total_registros = filas_clientes + filas_productos + filas_pedidos
         logger.info(f"FIN Etapa 4 | registros_cargados={total_registros} | db_path={DB_PATH}")
@@ -278,11 +273,19 @@ def cargar():
     except FileNotFoundError as e:
         logger.error(f"ARCHIVO NO ENCONTRADO: {e}")
         print(f"\n❌ Error: No se encontraron archivos validados en {VALIDATED_DIR}")
-        print("   Asegúrate de ejecutar primero: ingesta.py → limpieza.py → validacion.py")
         raise
     except Exception as e:
+        # Aplicación explícita de ACID: deshacer cambios en caso de cualquier error (ROLLBACK)
+        if conn:
+            conn.rollback()
+            logger.warning("Transacción revertida (ROLLBACK) debido a un error durante la carga")
         logger.error(f"ERROR al cargar: {str(e)}", exc_info=True)
         raise
+    finally:
+        # Asegurar el cierre de la conexión bajo cualquier escenario para liberar memoria
+        if conn:
+            conn.close()
+            logger.info("Conexión a la base de datos cerrada correctamente")
 
 
 def ejecutar_pipeline_completo():
