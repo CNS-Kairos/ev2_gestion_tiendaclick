@@ -6,9 +6,9 @@
 #   1. Leer datos validados desde /data/validated/.
 #   2. Crear conexión a base de datos SQLite (o configurable a otro motor).
 #   3. Definir esquema con tipos, PKs y FKs.
-#   4. Insertar datos en orden (padres → hijos).
-#   5. Manejar integridad (INSERT OR IGNORE / REPLACE según política).
-#   6. Logging y reporte final.
+#   4. Insertar datos en orden (padres → hijos) dentro de una transacción.
+#   5. Registros rechazados por la BD → log + /data/errors/.
+#   6. Verificación SQL y reporte final.
 # =============================================================================
 
 import logging
@@ -19,10 +19,12 @@ import pandas as pd
 # ─── Rutas del proyecto ──────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).resolve().parent
 VALIDATED_DIR = BASE_DIR / "data" / "validated"
+ERRORS_DIR = BASE_DIR / "data" / "errors"
 DB_DIR = BASE_DIR / "data" / "database"
 LOG_DIR = BASE_DIR / "logs"
 
 DB_DIR.mkdir(parents=True, exist_ok=True)
+ERRORS_DIR.mkdir(parents=True, exist_ok=True)
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 DB_PATH = DB_DIR / "tiendaclick.db"
@@ -68,7 +70,7 @@ CREATE TABLE IF NOT EXISTS pedidos (
     id_pedido INTEGER PRIMARY KEY,
     id_cliente INTEGER NOT NULL,
     id_producto INTEGER NOT NULL,
-    cantidad REAL NOT NULL,
+    cantidad INTEGER NOT NULL,
     monto_total_clp REAL NOT NULL,
     fecha_pedido TEXT,
     fecha_despacho TEXT,
@@ -108,54 +110,67 @@ def crear_base_datos(conn):
 
 def limpiar_tablas(conn, tablas):
     """
-    Opcional: limpia tablas antes de insertar (para reiniciar pipeline).
-    Por defecto comentado para no borrar datos accidentalmente.
+    Limpia tablas antes de insertar (para poder re-ejecutar el pipeline).
+    IMPORTANTE: el orden debe ser hija → padres (pedidos primero), porque
+    con PRAGMA foreign_keys=ON no se puede borrar un cliente que aún
+    tiene pedidos apuntándole.
     """
     cursor = conn.cursor()
     for tabla in tablas:
         cursor.execute(f"DELETE FROM {tabla};")
-    conn.commit()
     logger.info(f"Tablas limpiadas: {', '.join(tablas)}")
     print(f"🧹 Tablas limpiadas: {', '.join(tablas)}")
 
 
-def cargar_tabla(conn, df, tabla, insert_mode="replace"):
+def cargar_tabla(conn, df, tabla):
     """
-    Carga un DataFrame a una tabla SQL.
-    
-    Parámetros:
-    - conn: conexión a BD
-    - df: DataFrame con datos
-    - tabla: nombre de la tabla
-    - insert_mode: 'append' (agrega) o 'replace' (reemplaza)
+    Carga un DataFrame fila a fila con INSERT.
+
+    ¿Por qué fila a fila y no df.to_sql()? Porque to_sql inserta todo el
+    lote de una vez: una sola fila con FK inválida bota la tabla completa.
+    Insertando fila a fila, las que la BD rechaza (PK duplicada, FK
+    inexistente) se capturan con try/except, quedan en el log y en
+    /data/errors/<tabla>_rechazados_bd.csv, y el resto se carga igual.
     """
     if df.empty:
         print(f"⚠️ Tabla {tabla}: sin datos para cargar")
         logger.warning(f"Tabla {tabla}: DataFrame vacío, no se cargó nada")
         return 0
-    
-    filas = len(df)
-    
-    if insert_mode == "replace":
-        # Opción más segura: eliminar solo los registros que vamos a insertar
-        # usando las claves primarias. Por simplicidad, truncamos la tabla.
-        cursor = conn.cursor()
-        cursor.execute(f"DELETE FROM {tabla};")
-        logger.info(f"Tabla {tabla} truncada antes de insertar")
-    
-    # Insertar usando pandas.to_sql (manejo automático de tipos)
-    # if_exists: 'append' porque ya truncamos manualmente
-    df.to_sql(tabla, conn, if_exists="append", index=False)
-    
-    logger.info(f"CARGA OK | tabla={tabla} | filas_insertadas={filas}")
-    print(f"  {tabla}: {filas} registros insertados")
-    return filas
+
+    columnas = ", ".join(df.columns)
+    marcadores = ", ".join(["?"] * len(df.columns))
+    sql = f"INSERT INTO {tabla} ({columnas}) VALUES ({marcadores})"
+
+    cursor = conn.cursor()
+    insertadas = 0
+    rechazadas = []
+
+    for fila in df.itertuples(index=False):
+        valores = tuple(None if pd.isna(v) else v for v in fila)
+        try:
+            cursor.execute(sql, valores)
+            insertadas += 1
+        except sqlite3.IntegrityError as e:
+            # Registro rechazado por la BD (PK duplicada, FK rota, NOT NULL)
+            rechazo = dict(zip(df.columns, valores))
+            rechazo["motivo_bd"] = str(e)
+            rechazadas.append(rechazo)
+            logger.warning(f"RECHAZO BD | tabla={tabla} | {e} | registro={valores[0]}")
+
+    if rechazadas:
+        ruta_rechazos = ERRORS_DIR / f"{tabla}_rechazados_bd.csv"
+        pd.DataFrame(rechazadas).to_csv(ruta_rechazos, index=False, encoding="utf-8")
+        print(f"  {tabla}: {len(rechazadas)} registros RECHAZADOS por la BD → {ruta_rechazos.name}")
+
+    logger.info(f"CARGA OK | tabla={tabla} | insertadas={insertadas} | rechazadas={len(rechazadas)}")
+    print(f"  {tabla}: {insertadas} registros insertados")
+    return insertadas
 
 
 def verificar_integridad(conn):
     """Verifica integridad referencial después de la carga."""
     cursor = conn.cursor()
-    
+
     # Verificar huérfanos en pedidos
     cursor.execute("""
         SELECT COUNT(*) FROM pedidos p
@@ -164,36 +179,36 @@ def verificar_integridad(conn):
         WHERE c.id_cliente IS NULL OR pr.id_producto IS NULL
     """)
     huerfanos = cursor.fetchone()[0]
-    
+
     if huerfanos > 0:
         logger.warning(f"INTEGRIDAD: {huerfanos} pedidos con FK inválidas")
         print(f"Advertencia: {huerfanos} pedidos tienen referencias inválidas")
     else:
         logger.info("INTEGRIDAD OK: Sin huérfanos en pedidos")
         print(" Integridad referencial verificada: OK")
-    
+
     return huerfanos
 
 
 def mostrar_estadisticas(conn):
     """Muestra estadísticas resumidas de la base de datos cargada."""
     cursor = conn.cursor()
-    
+
     cursor.execute("SELECT COUNT(*) FROM clientes")
     total_clientes = cursor.fetchone()[0]
-    
+
     cursor.execute("SELECT COUNT(*) FROM productos")
     total_productos = cursor.fetchone()[0]
-    
+
     cursor.execute("SELECT COUNT(*) FROM pedidos")
     total_pedidos = cursor.fetchone()[0]
-    
+
     cursor.execute("""
         SELECT SUM(monto_total_clp) FROM pedidos
         WHERE estado = 'entregado'
     """)
     ventas_totales = cursor.fetchone()[0] or 0
-    
+
     print(f"\n{'=' * 60}")
     print("📊 ESTADÍSTICAS FINALES - BASE DE DATOS")
     print(f"{'=' * 60}")
@@ -201,8 +216,18 @@ def mostrar_estadisticas(conn):
     print(f"  Productos: {total_productos:,}")
     print(f"  Pedidos:   {total_pedidos:,}")
     print(f"  Ventas totales (entregados): ${ventas_totales:,.0f} CLP")
+
+    # Verificación SQL con GROUP BY (pauta: SELECT COUNT, GROUP BY)
+    print(f"\n  Ingresos por categoría (GROUP BY):")
+    cursor.execute("""
+        SELECT p.categoria, COUNT(*) AS pedidos, SUM(pe.monto_total_clp) AS ingresos
+        FROM pedidos pe JOIN productos p ON pe.id_producto = p.id_producto
+        GROUP BY p.categoria ORDER BY ingresos DESC
+    """)
+    for categoria, n_pedidos, ingresos in cursor.fetchall():
+        print(f"    {categoria:<15} {n_pedidos:>4} pedidos   ${ingresos:>12,.0f} CLP")
     print(f"{'=' * 60}")
-    
+
     logger.info(
         f"ESTADÍSTICAS FINALES | clientes={total_clientes} | "
         f"productos={total_productos} | pedidos={total_pedidos} | "
@@ -212,13 +237,13 @@ def mostrar_estadisticas(conn):
 
 def cargar():
     """Ejecuta la carga completa a base de datos."""
-    
+
     logger.info("INICIO Etapa 4 — Carga a Base de Datos")
-    
+
     print("\n" + "=" * 60)
     print("ETAPA 4 — CARGA A BASE DE DATOS")
     print("=" * 60)
-    
+
     conn = None  # Inicializamos la variable para el manejo en bloques posteriores
     try:
         # 1. Leer datos validados
@@ -226,118 +251,74 @@ def cargar():
         clientes = pd.read_csv(VALIDATED_DIR / "clientes.csv")
         productos = pd.read_csv(VALIDATED_DIR / "productos.csv")
         pedidos = pd.read_csv(VALIDATED_DIR / "pedidos.csv")
-        
+
+        # Tipos correctos antes de insertar (cantidad llega como 2.0)
+        pedidos["cantidad"] = pedidos["cantidad"].astype(int)
+
         print(f"  clientes:  {len(clientes)} registros")
         print(f"  productos: {len(productos)} registros")
         print(f"  pedidos:   {len(pedidos)} registros")
-        
+
         logger.info(f"Datos leídos | clientes={len(clientes)} | productos={len(productos)} | pedidos={len(pedidos)}")
-        
+
         # 2. Conectar a BD (SQLite)
         conn = sqlite3.connect(DB_PATH)
-        
+
         # 2.1. Activar validación de llaves foráneas (ACID compliance)
         conn.execute("PRAGMA foreign_keys = ON")
-        
+
         # 3. Crear esquema
         crear_base_datos(conn)
-        
-        # 4. Cargar datos en orden (padres → hijos)
+
+        # 4. Cargar datos dentro de UNA transacción (patrón 'with conn:' de
+        #    clases): si algo falla a mitad de camino, ROLLBACK automático —
+        #    todo o nada, sin cargas parciales
         print("\n💾 Cargando datos...")
-        logger.info("Iniciando carga de datos en tablas")
-        
-        filas_clientes = cargar_tabla(conn, clientes, "clientes", insert_mode="replace")
-        filas_productos = cargar_tabla(conn, productos, "productos", insert_mode="replace")
-        filas_pedidos = cargar_tabla(conn, pedidos, "pedidos", insert_mode="replace")
-        
-        # Confirmación explícita de la transacción (ACID - COMMIT) si todo fue exitoso
-        conn.commit()
-        
+        logger.info("Iniciando carga de datos en tablas (transacción única)")
+
+        with conn:
+            # Truncar en orden hija → padres (para poder re-ejecutar)
+            limpiar_tablas(conn, ["pedidos", "clientes", "productos"])
+
+            # Insertar en orden padres → hija (FK exigen que el padre exista)
+            filas_clientes = cargar_tabla(conn, clientes, "clientes")
+            filas_productos = cargar_tabla(conn, productos, "productos")
+            filas_pedidos = cargar_tabla(conn, pedidos, "pedidos")
+        # ← al salir del with sin errores: COMMIT automático
+
         # 5. Verificar integridad referencial
         print("\n🔍 Verificando integridad...")
         verificar_integridad(conn)
-        
-        # 6. Mostrar estadísticas finales
+
+        # 6. Mostrar estadísticas finales (verificación SQL)
         mostrar_estadisticas(conn)
-        
+
         total_registros = filas_clientes + filas_productos + filas_pedidos
         logger.info(f"FIN Etapa 4 | registros_cargados={total_registros} | db_path={DB_PATH}")
         print(f"\n✅ CARGA COMPLETA: {total_registros} registros cargados")
         print(f"   Base de datos: {DB_PATH}")
-        
+
         return {
             "clientes": filas_clientes,
             "productos": filas_productos,
             "pedidos": filas_pedidos,
             "db_path": str(DB_PATH)
         }
-        
+
     except FileNotFoundError as e:
         logger.error(f"ARCHIVO NO ENCONTRADO: {e}")
         print(f"\n❌ Error: No se encontraron archivos validados en {VALIDATED_DIR}")
         raise
     except Exception as e:
-        # Aplicación explícita de ACID: deshacer cambios en caso de cualquier error (ROLLBACK)
-        if conn:
-            conn.rollback()
-            logger.warning("Transacción revertida (ROLLBACK) debido a un error durante la carga")
-        logger.error(f"ERROR al cargar: {str(e)}", exc_info=True)
+        # El 'with conn:' ya hizo ROLLBACK automático de la transacción
+        logger.error(f"ERROR al cargar: {str(e)} | ROLLBACK ejecutado", exc_info=True)
         raise
     finally:
-        # Asegurar el cierre de la conexión bajo cualquier escenario para liberar memoria
+        # Asegurar el cierre de la conexión bajo cualquier escenario
         if conn:
             conn.close()
             logger.info("Conexión a la base de datos cerrada correctamente")
 
 
-def ejecutar_pipeline_completo():
-    """
-    Función opcional: ejecuta todo el pipeline de extremo a extremo.
-    Requiere importar las funciones de los otros módulos.
-    """
-    print("\n" + "=" * 70)
-    print("🚀 EJECUTANDO PIPELINE COMPLETO: Ingesta → Limpieza → Validación → Carga")
-    print("=" * 70)
-    
-    # Importar funciones de otros módulos (asumiendo que están en el mismo directorio)
-    try:
-        from ingesta import ingestar
-        from limpieza import limpiar
-        from validacion import validar
-        
-        print("\n--- ETAPA 1: INGESTA ---")
-        datos_raw = ingestar()
-        
-        print("\n--- ETAPA 2: LIMPIEZA ---")
-        datos_limpios = limpiar()
-        
-        print("\n--- ETAPA 3: VALIDACIÓN ---")
-        datos_validos = validar()
-        
-        print("\n--- ETAPA 4: CARGA ---")
-        resultado_carga = cargar()
-        
-        print("\n" + "=" * 70)
-        print("🎉 PIPELINE COMPLETO EJECUTADO CON ÉXITO")
-        print("=" * 70)
-        
-        return resultado_carga
-        
-    except ImportError:
-        print("\n No se pudieron importar los módulos del pipeline.")
-        print("   Ejecutando solo la etapa de carga (asumiendo datos ya validados)...")
-        return cargar()
-    except Exception as e:
-        print(f"\n Error en pipeline completo: {e}")
-        raise
-
-
 if __name__ == "__main__":
-    # Por defecto ejecuta solo la carga (datos ya deben estar en /validated)
-    # Si quieres ejecutar todo el pipeline, usa ejecutar_pipeline_completo()
-    
-    # Opción 1: Solo carga
     cargar()
-    
-    # Opción 2: Pipeline completo (descomentar la siguiente línea)
-    # ejecutar_pipeline_completo()

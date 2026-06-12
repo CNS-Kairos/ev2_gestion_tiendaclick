@@ -13,20 +13,17 @@ import logging
 import sys
 from pathlib import Path
 
-# Importar funciones principales de cada etapa
-from ingesta import ingestar
-from limpieza import limpiar
-from validacion import validar
-from carga import cargar
-
 # ─── Rutas del proyecto ──────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).resolve().parent
-DATA_DIR = BASE_DIR / "data"
-LOG_FILE = DATA_DIR / "pipeline.log"
-LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
+LOG_DIR = BASE_DIR / "logs"
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+LOG_FILE = LOG_DIR / "pipeline.log"
 
 # ─── Configuración centralizada de logging ───────────────────────────────────
-# Formato: timestamp | NIVEL | mensaje
+# IMPORTANTE: debe ejecutarse ANTES de importar las etapas. Cada módulo llama
+# logging.basicConfig() al importarse, y basicConfig solo tiene efecto la
+# PRIMERA vez — si las etapas se importaran antes, ingesta.py configuraría el
+# logger raíz hacia ingesta.log y esta configuración quedaría ignorada.
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
@@ -38,6 +35,12 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger(__name__)
+
+# Importar funciones principales de cada etapa (después del basicConfig)
+from ingesta import ingestar
+from limpieza import limpiar
+from validacion import validar
+from carga import cargar
 
 
 def ejecutar_etapa(nombre, funcion):
