@@ -141,7 +141,6 @@ def cargar_tabla(conn, df, tabla, insert_mode="replace"):
         # usando las claves primarias. Por simplicidad, truncamos la tabla.
         cursor = conn.cursor()
         cursor.execute(f"DELETE FROM {tabla};")
-        conn.commit()
         logger.info(f"Tabla {tabla} truncada antes de insertar")
     
     # Insertar usando pandas.to_sql (manejo automático de tipos)
@@ -236,6 +235,9 @@ def cargar():
         
         # 2. Conectar a BD (SQLite)
         conn = sqlite3.connect(DB_PATH)
+        
+        # 2.1. Activar validación de llaves foráneas (ACID compliance)
+        conn.execute("PRAGMA foreign_keys = ON")
         
         # 3. Crear esquema
         crear_base_datos(conn)
