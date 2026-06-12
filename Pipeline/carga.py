@@ -28,11 +28,14 @@ LOG_DIR.mkdir(parents=True, exist_ok=True)
 DB_PATH = DB_DIR / "tiendaclick.db"
 
 # ─── Logging ─────────────────────────────────────────────────────────────────
-logging.basicConfig(
-    filename=LOG_DIR / "carga.log",
-    level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(message)s",
-)
+# Obtener logger centralizado (configurado por main.py) o crear uno de respaldo
+logger = logging.getLogger(__name__)
+if not logger.handlers:
+    # Si se ejecuta directamente (no desde main.py), crear un logger local
+    handler = logging.FileHandler(LOG_DIR / "carga.log", encoding="utf-8")
+    handler.setFormatter(logging.Formatter("%(asctime)s | %(levelname)s | %(message)s"))
+    logger.addHandler(handler)
+    logger.setLevel(logging.INFO)
 
 
 # ─── Definición del esquema de la base de datos ─────────────────────────────
@@ -99,7 +102,7 @@ def crear_base_datos(conn):
     for idx_sql in INDEXES_SQL:
         cursor.execute(idx_sql)
     conn.commit()
-    logging.info("Esquema de base de datos creado/verificado correctamente")
+    logger.info("Esquema de base de datos creado/verificado correctamente")
     print(" Esquema de base de datos listo")
 
 
@@ -112,7 +115,7 @@ def limpiar_tablas(conn, tablas):
     for tabla in tablas:
         cursor.execute(f"DELETE FROM {tabla};")
     conn.commit()
-    logging.info(f"Tablas limpiadas: {', '.join(tablas)}")
+    logger.info(f"Tablas limpiadas: {', '.join(tablas)}")
     print(f"🧹 Tablas limpiadas: {', '.join(tablas)}")
 
 
@@ -128,7 +131,7 @@ def cargar_tabla(conn, df, tabla, insert_mode="replace"):
     """
     if df.empty:
         print(f"⚠️ Tabla {tabla}: sin datos para cargar")
-        logging.warning(f"Tabla {tabla}: DataFrame vacío, no se cargó nada")
+        logger.warning(f"Tabla {tabla}: DataFrame vacío, no se cargó nada")
         return 0
     
     filas = len(df)
@@ -139,13 +142,13 @@ def cargar_tabla(conn, df, tabla, insert_mode="replace"):
         cursor = conn.cursor()
         cursor.execute(f"DELETE FROM {tabla};")
         conn.commit()
-        logging.info(f"Tabla {tabla} truncada antes de insertar")
+        logger.info(f"Tabla {tabla} truncada antes de insertar")
     
     # Insertar usando pandas.to_sql (manejo automático de tipos)
     # if_exists: 'append' porque ya truncamos manualmente
     df.to_sql(tabla, conn, if_exists="append", index=False)
     
-    logging.info(f"CARGA OK | tabla={tabla} | filas_insertadas={filas}")
+    logger.info(f"CARGA OK | tabla={tabla} | filas_insertadas={filas}")
     print(f"  {tabla}: {filas} registros insertados")
     return filas
 
@@ -164,10 +167,10 @@ def verificar_integridad(conn):
     huerfanos = cursor.fetchone()[0]
     
     if huerfanos > 0:
-        logging.warning(f"INTEGRIDAD: {huerfanos} pedidos con FK inválidas")
+        logger.warning(f"INTEGRIDAD: {huerfanos} pedidos con FK inválidas")
         print(f"Advertencia: {huerfanos} pedidos tienen referencias inválidas")
     else:
-        logging.info("INTEGRIDAD OK: Sin huérfanos en pedidos")
+        logger.info("INTEGRIDAD OK: Sin huérfanos en pedidos")
         print(" Integridad referencial verificada: OK")
     
     return huerfanos
@@ -201,7 +204,7 @@ def mostrar_estadisticas(conn):
     print(f"  Ventas totales (entregados): ${ventas_totales:,.0f} CLP")
     print(f"{'=' * 60}")
     
-    logging.info(
+    logger.info(
         f"ESTADÍSTICAS FINALES | clientes={total_clientes} | "
         f"productos={total_productos} | pedidos={total_pedidos} | "
         f"ventas={ventas_totales:,.0f}"
@@ -211,9 +214,7 @@ def mostrar_estadisticas(conn):
 def cargar():
     """Ejecuta la carga completa a base de datos."""
     
-    logging.info("=" * 60)
-    logging.info("INICIO Etapa 4 — Carga a Base de Datos")
-    logging.info("=" * 60)
+    logger.info("INICIO Etapa 4 — Carga a Base de Datos")
     
     print("\n" + "=" * 60)
     print("ETAPA 4 — CARGA A BASE DE DATOS")
@@ -230,7 +231,7 @@ def cargar():
         print(f"  productos: {len(productos)} registros")
         print(f"  pedidos:   {len(pedidos)} registros")
         
-        logging.info(f"Datos leídos | clientes={len(clientes)} | productos={len(productos)} | pedidos={len(pedidos)}")
+        logger.info(f"Datos leídos | clientes={len(clientes)} | productos={len(productos)} | pedidos={len(pedidos)}")
         
         # 2. Conectar a BD (SQLite)
         conn = sqlite3.connect(DB_PATH)
@@ -244,6 +245,7 @@ def cargar():
         # 5. Cargar datos en orden (padres → hijos)
         print("\n💾 Cargando datos...")
         
+        logger.info("Iniciando carga de datos en tablas")
         # Primero tablas padre (sin dependencias)
         filas_clientes = cargar_tabla(conn, clientes, "clientes", insert_mode="replace")
         filas_productos = cargar_tabla(conn, productos, "productos", insert_mode="replace")
@@ -262,8 +264,7 @@ def cargar():
         conn.close()
         
         total_registros = filas_clientes + filas_productos + filas_pedidos
-        logging.info(f"FIN Etapa 4 | registros_cargados={total_registros} | db_path={DB_PATH}")
-        
+        logger.info(f"FIN Etapa 4 | registros_cargados={total_registros} | db_path={DB_PATH}")
         print(f"\n✅ CARGA COMPLETA: {total_registros} registros cargados")
         print(f"   Base de datos: {DB_PATH}")
         
@@ -275,13 +276,12 @@ def cargar():
         }
         
     except FileNotFoundError as e:
-        logging.error(f"ARCHIVO NO ENCONTRADO: {e}")
+        logger.error(f"ARCHIVO NO ENCONTRADO: {e}")
         print(f"\n❌ Error: No se encontraron archivos validados en {VALIDATED_DIR}")
         print("   Asegúrate de ejecutar primero: ingesta.py → limpieza.py → validacion.py")
         raise
     except Exception as e:
-        logging.error(f"ERROR al cargar: {str(e)}")
-        print(f"\n❌ Error durante la carga: {e}")
+        logger.error(f"ERROR al cargar: {str(e)}", exc_info=True)
         raise
 
 
